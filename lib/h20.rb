@@ -5,7 +5,7 @@ module H20
     def initialize(params)
       if params.kind_of?(Hash)
         @attributes = params #.deep_symbolize_keys
-        hash_to_methods
+        # hash_to_methods
       else
         @attributes = params
       end
@@ -19,21 +19,21 @@ module H20
       @attributes
     end
 
-    # private
-    def hash_to_methods
-      @attributes.each do |k,v|
-        self.class.class_eval do
-          define_method k do
-            if v.kind_of?(Hash)
-              H2o.new(v)
-            elsif v.kind_of?(Array)
-              v.map{|e| H2o.new(e)}
-            else
-              v
-            end
-          end
-        end
-      end
+    def method_missing(m)
+    	if @attributes.map{|k,v| k}.include?(m)
+	    	value = @attributes[m]
+	    	r_value = nil
+	    	if value.kind_of?(Hash)
+	    		r_value = H2o.new(value)
+	    	elsif value.kind_of?(Array)
+	    		r_value = value.map { |e| H2o.new(e)  }
+	    	else
+	    		r_value = value
+	    	end
+	    	r_value
+	    else
+	    	super
+	    end
     end
   end 
 end
