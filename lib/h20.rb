@@ -1,4 +1,5 @@
 require "h20/version"
+require "json"
 
 module H20
   class H2o

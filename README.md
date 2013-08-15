@@ -18,7 +18,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+hash = {name: "John", age: 25, educations: [{title: "BSC"}, {title: "MSC"}]}
+
+user = H20::H2o.new(hash) 
+
+user.name # John
+user.age # 25
+
+educations = user.eductions
+education[0].title # BSC
+
+user.to_hash # {name: "John", age: 25, educations: [{title: "BSC"}, {title: "MSC"}]}
+
+
 
 ## Contributing
 
