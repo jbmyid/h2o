@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = "Helpful while handelling with api in json and hash format"
   gem.summary       = "Converts hash to objects"
   gem.homepage      = "https://github.com/jbmyid/h2o"
+  gem.license = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
