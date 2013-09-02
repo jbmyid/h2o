@@ -21,8 +21,8 @@ module H20
     end
 
     def method_missing(m)
-    	if @attributes.map{|k,v| k}.include?(m)
-	    	value = @attributes[m]
+    	if @attributes.map{|k,v| k}.include?(m) || @attributes.map{|k,v| k}.include?(m.to_s)
+	    	value = @attributes[m] || @attributes[m.to_s]
 	    	r_value = nil
 	    	if value.kind_of?(Hash)
 	    		r_value = H2o.new(value)
@@ -36,5 +36,5 @@ module H20
 	    	super
 	    end
     end
-  end 
+  end
 end
